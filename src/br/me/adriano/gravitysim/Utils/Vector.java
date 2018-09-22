@@ -9,11 +9,12 @@ public class Vector {
 	 *    |-- y  (left/right)
 	 *   /
 	 *  x  (foward/back)
+	 *  
+	 *  @author Adriano Junior 
 	 */
 	
-	
 	public double x=0, y=0, z=0;
-	protected static double magnitude=0;
+	private static double magnitude=0;
 	
 	public Vector(double _x, double _y, double _z) {
 		x=_x;
@@ -55,6 +56,14 @@ public class Vector {
 	
 	public Vector multiply(double scalar) {
 		return new Vector(x*scalar, y*scalar, z*scalar);
+	}
+	
+	public Vector to(Vector v) {
+		return v.subtract(this);
+	}
+	
+	public Vector from(Vector v) {
+		return this.subtract(v);
 	}
 	
 	public Vector reflect() {

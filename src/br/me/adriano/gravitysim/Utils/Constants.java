@@ -7,4 +7,8 @@ public enum Constants {
 	Constants(double d){
 		value = d;
 	}
+	
+	public double value() {
+		return value;
+	}
 }
