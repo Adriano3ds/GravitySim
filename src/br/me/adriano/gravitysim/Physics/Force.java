@@ -30,8 +30,14 @@ public class Force{
 	
 	public static Vector gravitational(Body b1, Body b2) {
 		Vector radial = b1.position.from(b2.position);
-		double fg = Constants.GRAVITATIONAL.value()*b1.mass*b2.mass/radial.magnitude();
+		double fg = Constants.GRAVITATIONAL.value()*b1.mass*b2.mass/Math.pow(radial.magnitude(), 2);
 		return radial.normalize().multiply(fg);
+	}
+	
+	public static Vector weight(AstronomicalBody ab, Body b) {
+		Vector radial = ab.position.from(b.position);
+		double g = Constants.GRAVITATIONAL.value()*ab.mass/Math.pow(radial.magnitude(), 2);
+		return radial.normalize().multiply(b.mass*g);
 	}
 	
 }
