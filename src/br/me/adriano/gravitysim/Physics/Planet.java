@@ -1,8 +1,6 @@
 package br.me.adriano.gravitysim.Physics;
 
-public class Planet extends Body{
-	
-	double radius;
+public class Planet extends AstronomicalBody{
 	
 	public void attract(Body b) {
 		//Do Stuff
