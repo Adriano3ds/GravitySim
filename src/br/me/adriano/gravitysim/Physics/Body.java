@@ -9,6 +9,7 @@ public class Body extends TimeObject{
 	Vector velocity;
 	Vector aceleration;
 	Vector centerOfMass;
+	Vector[] forces;
 	
 	@Override
 	public void tick() {
