@@ -1,10 +1,8 @@
 package br.me.adriano.gravitysim;
 
-import java.util.Timer;
-
 import br.me.adriano.gravitysim.Physics.Body;
 import br.me.adriano.gravitysim.Physics.Planet;
-import br.me.adriano.gravitysim.Physics.TimeController;
+import br.me.adriano.gravitysim.Physics.SimTime;
 import br.me.adriano.gravitysim.Physics.TimeObject;
 import br.me.adriano.gravitysim.Utils.Vector;
 
@@ -21,8 +19,8 @@ public class Main {
 			System.out.println(t.getClass());
 		}
 		
-		Timer t = new Timer();
-		t.schedule(new TimeController(), 5000);
+		SimTime st = new SimTime();
+		st.startTime();
 	}
 
 }
