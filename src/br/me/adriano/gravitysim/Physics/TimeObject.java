@@ -11,7 +11,7 @@ public class TimeObject {
 	}
 	
 	public void tick() {
-		
+		//To be overridable
 	}
 	
 	public static final void run() {
