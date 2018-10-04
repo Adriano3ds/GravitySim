@@ -3,7 +3,7 @@ package br.me.adriano.gravitysim.Utils;
 public class Vector {
 	
 	/*
-	 *    Notation: <axis> (positive/negaitve)
+	 *    Notation: <axis> (positive/negative)
 	 *    
 	 *    z  (up/down)
 	 *    |-- y  (left/right)
