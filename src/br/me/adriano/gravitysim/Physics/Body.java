@@ -13,7 +13,6 @@ public class Body extends TimeObject{
 	
 	@Override
 	public void tick() {
-		System.out.println("This is a Body");
 		super.tick();
 	}
 }
