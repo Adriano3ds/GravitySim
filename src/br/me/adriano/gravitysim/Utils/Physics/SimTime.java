@@ -1,32 +1,50 @@
-package br.me.adriano.gravitysim.Physics;
+package br.me.adriano.gravitysim.Utils.Physics;
 
 public class SimTime {
-	SimTimerTask stt = new SimTimerTask();
-	SimTimer st = new SimTimer(stt, 1);
+	SimTimerTask simTimerTask = new SimTimerTask();
+	SimTimer simTimer = new SimTimer(simTimerTask, 1);
 	
 	public SimTime() {
-		stt.setTimer(st);
+		simTimerTask.setTimer(simTimer);
 	}
 
 	public void startTime(){
-		st.start();
+		simTimer.start();
 	}
 	
 	public void pause(){
-		
+		simTimerTask.paused = true;
+	}
+
+	public void unpause(){
+		simTimerTask.paused = false;
 	}
 	
-	public void multiplyIntervalBy(float multiplier){
+	public void multiplyIntervalBy(double multiplier){
 		if(multiplier<=0.0f){
 			this.pause();
 		}else{
-			st._multiplier = st.multiplier;
-			st.multiplier = multiplier;
-			st.changeInterval((long) (st.getInterval()*multiplier), stt.time);
+			this.unpause();
+			simTimer.oldMultiplier = simTimer.multiplier;
+			simTimer.multiplier = multiplier;
+			simTimer = simTimer.changeInterval(simTimer.getInterval()*multiplier/(simTimer.oldMultiplier *1000), simTimerTask.time);
+			simTimerTask = simTimer.getTask();
 		}
 	}
-	
+
+	public double speedUp(){
+		double newMultiplier = simTimer.multiplier/2;
+		this.multiplyIntervalBy(newMultiplier);
+		return newMultiplier;
+	}
+
+	public double speedDown(){
+		double newMultiplier = simTimer.multiplier*2;
+		this.multiplyIntervalBy(newMultiplier);
+		return newMultiplier;
+	}
+
 	public double getTime(){
-		return stt.time;
+		return simTimerTask.time;
 	}
 }
