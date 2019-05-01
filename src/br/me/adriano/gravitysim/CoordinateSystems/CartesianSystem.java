@@ -1,6 +1,6 @@
 package br.me.adriano.gravitysim.CoordinateSystems;
 
-import br.me.adriano.gravitysim.Utils.Vector;
+import br.me.adriano.gravitysim.Utils.Math.Vector;
 
 public class CartesianSystem extends CoordinateSystem {
 	

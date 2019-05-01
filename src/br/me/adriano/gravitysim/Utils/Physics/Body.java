@@ -1,15 +1,15 @@
-package br.me.adriano.gravitysim.Physics;
+package br.me.adriano.gravitysim.Utils.Physics;
 
-import br.me.adriano.gravitysim.Utils.Vector;
+import br.me.adriano.gravitysim.Utils.Math.Vector;
 
 public class Body extends TimeObject{
 	
-	double mass;
-	Vector position;
-	Vector velocity;
-	Vector aceleration;
-	Vector centerOfMass;
-	Vector[] forces;
+	public double mass;
+	public Vector position;
+	public Vector velocity;
+	public Vector aceleration;
+	public Vector centerOfMass;
+	public Force[] forces;
 	
 	@Override
 	public void tick() {

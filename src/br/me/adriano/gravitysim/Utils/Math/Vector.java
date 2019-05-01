@@ -1,4 +1,4 @@
-package br.me.adriano.gravitysim.Utils;
+package br.me.adriano.gravitysim.Utils.Math;
 
 public class Vector {
 	

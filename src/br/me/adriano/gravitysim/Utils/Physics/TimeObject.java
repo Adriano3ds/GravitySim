@@ -1,4 +1,4 @@
-package br.me.adriano.gravitysim.Physics;
+package br.me.adriano.gravitysim.Utils.Physics;
 
 import java.util.ArrayList;
 
