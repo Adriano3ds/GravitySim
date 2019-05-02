@@ -1,4 +1,4 @@
-package br.me.adriano.gravitysim.Physics;
+package br.me.adriano.gravitysim.Utils.Physics;
 
 import java.util.TimerTask;
 
@@ -14,7 +14,7 @@ public class SimTimerTask extends TimerTask{
 	public void setTimer(SimTimer _timer){
 		timer = _timer;
 	}
-	
+
 	public void run() {
 		if(!paused){
 			System.out.println(time + " -  YEY!");
