@@ -1,12 +1,14 @@
 package br.me.adriano.gravitysim;
 
-import br.me.adriano.gravitysim.Physics.Body;
-import br.me.adriano.gravitysim.Physics.Planet;
-import br.me.adriano.gravitysim.Physics.SimTime;
-import br.me.adriano.gravitysim.Physics.TimeObject;
-import br.me.adriano.gravitysim.Utils.Vector;
+import br.me.adriano.gravitysim.Utils.Math.Vector;
+import br.me.adriano.gravitysim.Utils.Physics.Body;
+import br.me.adriano.gravitysim.Utils.Physics.Planet;
+import br.me.adriano.gravitysim.Utils.Physics.SimTime;
+import br.me.adriano.gravitysim.Utils.Physics.TimeObject;
 
 public class Main {
+
+	public static SimTime simTime;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -18,9 +20,26 @@ public class Main {
 		for(TimeObject t : TimeObject.tos) {
 			System.out.println(t.getClass());
 		}
-		
-		SimTime st = new SimTime();
-		st.startTime();
+		simTime = new SimTime();
+		simTime.startTime();
+		TimeSpeedControlGUI tscGUI = new TimeSpeedControlGUI(simTime);
+		/*
+		(new Timer()).schedule(new TimerTask(){
+
+			@Override
+			public void run() {
+				Scanner scanner = new Scanner(System.in);
+				try{
+					double f = scanner.nextDouble();
+					System.out.println("Tempo em " + f + "x");
+					simTime.multiplyIntervalBy(f);
+				}catch (Exception e){
+					System.out.println("ERROR");
+				}
+
+			}
+		}, 0, 1000);
+		*/
 	}
 
 }
