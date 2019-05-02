@@ -1,23 +1,23 @@
-package br.me.adriano.gravitysim.Physics;
+package br.me.adriano.gravitysim.Utils.Physics;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SimTimer extends Timer{
-	private SimTimerTask ttask;
+	private SimTimerTask simTimerTask;
 	private long interval;
-	float multiplier = 1.0f, _multiplier=1.0f;
+	double multiplier = 1.0, oldMultiplier =1.0;
 	
-	public SimTimer(SimTimerTask _task, long _interval) {
-		ttask = _task;
-		interval = _interval*1000;
+	public SimTimer(SimTimerTask _task, double newInterval) {
+		simTimerTask = _task;
+		interval = (long) (newInterval*1000);
 	}
 	
-	public SimTimer(SimTimerTask _task, long _interval, double currenttime) {
-		ttask = _task;
-		interval = _interval*1000;
-		ttask.time = currenttime;
-		ttask.changed = true;
+	public SimTimer(SimTimerTask _task, double newInterval, double currenttime) {
+		simTimerTask = _task;
+		interval = (long) (newInterval*1000);
+		simTimerTask.time = currenttime;
+		simTimerTask.changed = true;
 	}
 	
 	public long getInterval() {
@@ -25,7 +25,7 @@ public class SimTimer extends Timer{
 	}
 	
 	public void start(){
-		this.start(ttask, interval);
+		this.start(simTimerTask, interval);
 	}
 	
 	public void start(SimTimer newTimer, SimTimerTask newTask){
@@ -37,14 +37,18 @@ public class SimTimer extends Timer{
 		this.schedule(_ttask, 0, _interval);
 	}
 	
-	public void changeInterval(long newinteval, double currenttime){
+	public SimTimer changeInterval(double newinteval, double currenttime){
 		this.cancel();
+		System.out.println("Time Interval Changed to " + newinteval);
 		SimTimerTask newtask = new SimTimerTask();
 		SimTimer newtimer = new SimTimer(newtask, newinteval, currenttime);
+		newtimer.oldMultiplier = oldMultiplier;
+		newtimer.multiplier = multiplier;
 		newtimer.start(newtimer, newtask);
+		return newtimer;
 	}
-	
-	public Timer getTimer(){
-		return this;
+
+	SimTimerTask getTask(){
+		return simTimerTask;
 	}
 }
